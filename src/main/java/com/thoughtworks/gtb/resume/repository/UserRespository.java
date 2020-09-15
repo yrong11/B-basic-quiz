@@ -5,20 +5,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class UserRespository {
-    private static final Map<Integer, User> userMap = new HashMap<>();
-    private static final AtomicInteger atoInteger = new AtomicInteger(1);
+    private static final Map<Long, User> userMap = new HashMap<>();
+    private static final AtomicLong atomicLong = new AtomicLong(1);
 
     public void save(User user){
-        user.setId(atoInteger.get());
+        user.setId(atomicLong.get());
         userMap.put(user.getId(), user);
-        atoInteger.set(atoInteger.get() + 1);
+        atomicLong.set(atomicLong.get() + 1);
     }
 
-    public User findById(int id){
+    public User findById(long id){
         return userMap.get(id);
     }
 }

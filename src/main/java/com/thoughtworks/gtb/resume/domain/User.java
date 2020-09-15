@@ -20,7 +20,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 public class User {
-    private int id;
+    private long id;
     @ByteLength(min = 1, max = 128, message = ErrorMsg.USER_NAME_LENGTH_INVALID)
     @NotEmpty(message = ErrorMsg.USER_NAME_NOT_EMPTY)
     private String name;

@@ -19,7 +19,7 @@ public class EducationService {
         this.educationRespository = educationRespository;
     }
 
-    public void addEducations(int userId, Education education) throws UserNotExistException, EducationException {
+    public void addEducations(long userId, Education education) throws UserNotExistException, EducationException {
         User user = userRespository.findById(userId);
         if (user == null)
             throw new UserNotExistException();

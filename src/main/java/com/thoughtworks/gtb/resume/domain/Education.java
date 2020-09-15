@@ -23,7 +23,7 @@ public class Education {
     @NotEmpty(message = ErrorMsg.EDUCATION_DESC_NOT_EMPTY)
     @ByteLength(min = 1, max = 4096, message = ErrorMsg.EDUCATION_DESC_LENGTH_INVALID)
     private String description;
-    private int userId;
+    private long userId;
 
     @Override
     public boolean equals(Object o) {

@@ -25,10 +25,14 @@ public class UserController {
 
     @PostMapping("")
     public ResponseEntity addUser(@Valid @RequestBody User user){
-        int id = userService.addUser(user);
+        long id = userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 
-
+    @GetMapping("{id}")
+    public ResponseEntity getUser(@PathVariable long id) throws UserNotExistException {
+        User user = userService.getUser(id);
+        return ResponseEntity.ok(user);
+    }
 
 }

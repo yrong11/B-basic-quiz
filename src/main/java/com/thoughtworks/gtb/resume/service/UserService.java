@@ -16,10 +16,16 @@ public class UserService {
         this.userRespository = userRespository;
     }
 
-    public int addUser(User user) {
+    public long addUser(User user) {
         userRespository.save(user);
         return user.getId();
     }
 
 
+    public User getUser(long id) throws UserNotExistException {
+        User user = userRespository.findById(id);
+        if (user == null)
+            throw new UserNotExistException();
+        return user;
+    }
 }
