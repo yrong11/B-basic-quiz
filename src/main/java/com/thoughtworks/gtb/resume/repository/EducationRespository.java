@@ -24,7 +24,9 @@ public class EducationRespository {
     }
 
     public List<Education> findEducationsByUserId(long userId) {
-        Collections.sort(educationMap.get(userId));
+        if (educationMap.containsKey(userId)){
+            Collections.sort(educationMap.get(userId));
+        }
         return educationMap.get(userId);
     }
 }

@@ -4,6 +4,7 @@ import com.thoughtworks.gtb.resume.domain.Education;
 import com.thoughtworks.gtb.resume.exception.EducationException;
 import com.thoughtworks.gtb.resume.exception.UserNotExistException;
 import com.thoughtworks.gtb.resume.service.EducationService;
+import com.thoughtworks.gtb.resume.utils.json.EmptyJsonResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,6 @@ public class EducationController {
     @GetMapping("")
     public ResponseEntity getEducations(@PathVariable long userId) throws UserNotExistException {
         List<Education> educationList = educationService.getEducations(userId);
-        return ResponseEntity.ok(educationList);
+        return educationList == null ? ResponseEntity.ok(new EmptyJsonResponse()) : ResponseEntity.ok(educationList);
     }
 }
