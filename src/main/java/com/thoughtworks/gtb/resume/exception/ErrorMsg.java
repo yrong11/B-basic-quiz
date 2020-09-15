@@ -11,6 +11,8 @@ public class ErrorMsg {
     public static final String EDUCATION_YEAR_NOT_EMPTY = "The education year can not be empty";
     public static final String EDUCATION_TITLE_NOT_EMPTY = "The education title can not be empty";
     public static final String EDUCATION_DESC_NOT_EMPTY = "The education description can not be empty";
+    public static final String EDUCATION_TITLE_LENGTH_INVALID = "The education title length is not in range";
+    public static final String EDUCATION_DESC_LENGTH_INVALID = "The education description length is not in range";
 
 
 }

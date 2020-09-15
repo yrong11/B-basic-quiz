@@ -17,4 +17,8 @@ public class UserRespository {
         userMap.put(user.getId(), user);
         atoInteger.set(atoInteger.get() + 1);
     }
+
+    public User findById(int id){
+        return userMap.get(id);
+    }
 }

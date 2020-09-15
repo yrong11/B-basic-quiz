@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public class User {
     @ByteLength(max = 1024, message = ErrorMsg.USER_DESC_LENGTH_INVALID)
     private String description;
 
-    private List<Education> educations;
+    private List<Education> educations = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
