@@ -36,8 +36,6 @@ public class User {
     @ByteLength(max = 1024, message = ErrorMsg.USER_DESC_LENGTH_INVALID)
     private String description;
 
-    private List<Education> educations = new ArrayList<>();
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

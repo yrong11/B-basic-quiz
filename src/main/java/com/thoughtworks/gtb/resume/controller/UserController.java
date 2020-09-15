@@ -2,7 +2,9 @@ package com.thoughtworks.gtb.resume.controller;
 
 import com.thoughtworks.gtb.resume.domain.Education;
 import com.thoughtworks.gtb.resume.domain.User;
+import com.thoughtworks.gtb.resume.exception.EducationException;
 import com.thoughtworks.gtb.resume.exception.UserNotExistException;
+import com.thoughtworks.gtb.resume.service.EducationService;
 import com.thoughtworks.gtb.resume.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +29,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 
-    @PostMapping("/{id}/educations")
-    public ResponseEntity addEducations(@Valid @RequestBody Education education, @PathVariable int id) throws UserNotExistException {
-        userService.addEducations(id, education);
-        return ResponseEntity.ok().build();
-    }
+
+
 }

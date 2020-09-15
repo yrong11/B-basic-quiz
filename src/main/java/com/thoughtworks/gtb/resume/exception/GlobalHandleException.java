@@ -21,5 +21,10 @@ public class GlobalHandleException {
         return ResponseEntity.badRequest().body(errorResult);
     }
 
+    @ExceptionHandler(EducationException.class)
+    public ResponseEntity handleEducationException(EducationException exception) {
+        ErrorResult errorResult = ErrorResult.builder().code(HttpStatus.BAD_REQUEST.value()).message(exception.getMessage()).build();
+        return ResponseEntity.badRequest().body(errorResult);
+    }
 
 }

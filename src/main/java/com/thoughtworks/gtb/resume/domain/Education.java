@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +24,20 @@ public class Education {
     @ByteLength(min = 1, max = 4096, message = ErrorMsg.EDUCATION_DESC_LENGTH_INVALID)
     private String description;
     private int userId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Education)) return false;
+        Education education = (Education) o;
+        return userId == education.userId &&
+                year.equals(education.year) &&
+                title.equals(education.title) &&
+                description.equals(education.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, title, description, userId);
+    }
 }
