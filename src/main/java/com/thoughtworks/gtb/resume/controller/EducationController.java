@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -24,5 +25,11 @@ public class EducationController {
     public ResponseEntity addEducations(@Valid @RequestBody Education education, @PathVariable int userId) throws UserNotExistException, EducationException {
         educationService.addEducations(userId, education);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("")
+    public ResponseEntity getEducations(@PathVariable long userId) throws UserNotExistException {
+        List<Education> educationList = educationService.getEducations(userId);
+        return ResponseEntity.ok(educationList);
     }
 }

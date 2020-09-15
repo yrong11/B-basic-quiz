@@ -3,10 +3,7 @@ package com.thoughtworks.gtb.resume.repository;
 import com.thoughtworks.gtb.resume.domain.Education;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class EducationRespository {
@@ -27,6 +24,7 @@ public class EducationRespository {
     }
 
     public List<Education> findEducationsByUserId(long userId) {
+        Collections.sort(educationMap.get(userId));
         return educationMap.get(userId);
     }
 }

@@ -14,7 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Education {
+public class Education implements Comparable<Education>{
     @NotEmpty(message = ErrorMsg.EDUCATION_YEAR_NOT_EMPTY)
     private String year;
     @NotEmpty(message = ErrorMsg.EDUCATION_TITLE_NOT_EMPTY)
@@ -39,5 +39,10 @@ public class Education {
     @Override
     public int hashCode() {
         return Objects.hash(year, title, description, userId);
+    }
+
+    @Override
+    public int compareTo(Education o) {
+        return this.year.compareTo(o.year);
     }
 }
