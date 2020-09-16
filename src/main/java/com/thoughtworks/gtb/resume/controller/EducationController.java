@@ -31,6 +31,7 @@ public class EducationController {
     @GetMapping("")
     public ResponseEntity getEducations(@PathVariable long userId) throws UserNotExistException {
         List<Education> educationList = educationService.getEducations(userId);
+        // GTB: - education 为空的时，直接返回空的列表就行，不需要使用 EmptyJsonResponse
         return educationList == null ? ResponseEntity.ok(new EmptyJsonResponse()) : ResponseEntity.ok(educationList);
     }
 }

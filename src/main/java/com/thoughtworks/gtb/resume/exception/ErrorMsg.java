@@ -1,5 +1,6 @@
 package com.thoughtworks.gtb.resume.exception;
 
+// GTB: + 定义了ErrorMsg集中管理 message
 public class ErrorMsg {
     public static final String USER_NAME_NOT_EMPTY = "The user name can not be empty";
     public static final String USER_AVATAR_NOT_EMPTY = "The avatar link can not be empty";

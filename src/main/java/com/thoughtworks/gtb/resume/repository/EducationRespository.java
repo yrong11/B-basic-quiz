@@ -11,6 +11,7 @@ public class EducationRespository {
 
     public void save(Education education) {
         List<Education> educationList;
+        // GTB: if-else 即便只有一句，也尽量使用花括号
         if (isExistEducations(education.getUserId()))
             educationList = educationMap.get(education.getUserId());
         else

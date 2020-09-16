@@ -15,6 +15,7 @@ public class UserRespository {
     public void save(User user){
         user.setId(atomicLong.get());
         userMap.put(user.getId(), user);
+        // GTB: - atomicLong.incrementAndGet() 了解一下
         atomicLong.set(atomicLong.get() + 1);
     }
 

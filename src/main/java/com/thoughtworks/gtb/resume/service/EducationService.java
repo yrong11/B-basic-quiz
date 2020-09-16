@@ -38,6 +38,7 @@ public class EducationService {
 
 
     public User checkUserExist(long userId) throws UserNotExistException {
+        // GTB: 尝试让 Repository 返回 Optional，试试有没有其它写法
         User user = userRespository.findById(userId);
         if (user == null)
             throw new UserNotExistException();
