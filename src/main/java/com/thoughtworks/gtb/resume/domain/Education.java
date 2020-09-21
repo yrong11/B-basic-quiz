@@ -1,5 +1,6 @@
 package com.thoughtworks.gtb.resume.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thoughtworks.gtb.resume.exception.ErrorMsg;
 import com.thoughtworks.gtb.resume.utils.annotation.ByteLength;
 import lombok.AllArgsConstructor;
@@ -7,10 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
@@ -31,23 +29,10 @@ public class Education implements Comparable<Education>{
     @NotEmpty(message = ErrorMsg.EDUCATION_DESC_NOT_EMPTY)
     @ByteLength(min = 1, max = 4096, message = ErrorMsg.EDUCATION_DESC_LENGTH_INVALID)
     private String description;
-    private long userId;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Education)) return false;
-        Education education = (Education) o;
-        return userId == education.userId &&
-                year.equals(education.year) &&
-                title.equals(education.title) &&
-                description.equals(education.description);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(year, title, description, userId);
-    }
+    @ManyToOne
+    @JsonIgnore
+    private User user;
 
     @Override
     public int compareTo(Education o) {

@@ -1,5 +1,6 @@
 package com.thoughtworks.gtb.resume.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thoughtworks.gtb.resume.exception.ErrorMsg;
 import com.thoughtworks.gtb.resume.utils.annotation.ByteLength;
 import lombok.AllArgsConstructor;
@@ -8,13 +9,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.URL;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -41,6 +40,9 @@ public class User {
     @ByteLength(max = 1024, message = ErrorMsg.USER_DESC_LENGTH_INVALID)
     private String description;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
+    private List<Education> educations;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
