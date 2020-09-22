@@ -23,7 +23,7 @@ public class EducationController {
     }
 
     @PostMapping("")
-    public ResponseEntity addEducations(@Valid @RequestBody Education education, @PathVariable int userId) throws UserNotExistException, EducationException {
+    public ResponseEntity addEducations(@Valid @RequestBody Education education, @PathVariable long userId) throws UserNotExistException, EducationException {
         educationService.addEducations(userId, education);
         return ResponseEntity.ok().build();
     }
